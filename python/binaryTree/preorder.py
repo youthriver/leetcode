@@ -18,9 +18,31 @@ def createTree():
 
 
 def list2tree(arr):
-    for item in arr:
-        temp = TreeNode(item)
+    num = len(arr)
+    if num == 0:
+        return None
+    root = TreeNode(arr[0])
+    temp = root
+    for index, item in enumerate(arr):
+        if index * 2 + 1 < num:
+            temp.left = TreeNode(arr[index * 2 + 1])
+        if index * 2 + 2 < num:
+            temp.right = TreeNode(arr[index * 2 + 2])
+    return root
 
+
+def list2tree_recursive(arr):
+    # arr = [3,9,20,None,None,15,7]
+    def trans(index):
+        if index >= len(arr) or arr[index] == None:
+            return None
+        if index < len(arr):
+            temp = TreeNode(arr[index])
+            temp.left = trans(index * 2 + 1)
+            temp.right = trans(index * 2  + 2)
+        return temp
+    root = trans(0)
+    return root
 
 def demo():
     pass
