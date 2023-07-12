@@ -1,4 +1,10 @@
 
+import logging
+import os
+
+logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s', level=logging.DEBUG)
+
+
 class TreeNode:
     def __init__(self, value):
         self.value = value
