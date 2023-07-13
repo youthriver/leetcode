@@ -11,19 +11,49 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # [20, 70, 110, 150], 90 => [0, 1]
 
 def sumOfTwo(arr, target):
-    position = {}
+    # o(nlogn)
+    result = [None, None]
     temp = {}
     for pos, item in enumerate(arr):
         temp[item] = pos
 
     arr.sort()
-            
-    return
+    left = 0
+    right = len(arr) - 1
+    while left < right:
+        if arr[left] + arr[right] == target:
+            result[0] = temp[arr[left]]
+            result[1] = temp[arr[right]]
+            break
+        elif (arr[left] + arr[right] > target):
+            right = right - 1
+        else:
+            left = left + 1
+    return result
+
+
+def sumOfTwo_hash(arr, target):
+    result = [None, None]
+    temp = {}
+    for pos, item in enumerate(arr):
+        if target - item in temp:
+            pos1 = pos
+            pos2 = temp[target - item]
+            break
+        temp[item] = pos
+    result[0] = min([pos1, pos2])
+    result[1] = max([pos1, pos2])
+    return result
+
+
 
 def demo():
-    arr = []
-    target = 10
-    result = sumOfTwo(arr, target)
+    arr = [20, 70, 110, 150]
+    target = 90
+    # arr = [3, 2, 4]
+    # target = 6
+    # result = sumOfTwo(arr, target)
+    result = sumOfTwo_hash(arr, target)
     print(result)
 
 if __name__ == '__main__':
