@@ -14,11 +14,31 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 进阶: 空间复杂度o(n), 时间复杂度o(n)
 
 def string_translate(arr, num):
-
-    return
+    left = 0
+    result = ''
+    part = ''
+    for i in range(num):
+        temp = arr[i]
+        if temp != ' ':
+            if ord(temp)  >= 97 and ord(temp) <= 122:  # 小写字母
+                temp = chr(ord(temp) - 32)
+            elif ord(temp) >= 65 and ord(temp) <= 90:  # 大写字母
+                temp = chr(ord(temp) + 32)
+            part += temp
+        else:
+            result = part + ' ' + result
+            part = ''
+    if result:
+        result = part + ' ' + result
+    else:
+        result = part
+    return result
 
 def demo():
-    arr = ''
+    arr = 'nowcoder'
+    arr = 'Hello World'
+    arr = "This is a sample"
+    arr = 'iOS'
     num = len(arr)
     result = string_translate(arr, num)
     logging.info(result)
