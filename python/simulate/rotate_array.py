@@ -11,13 +11,32 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 1 <= N <= 100, M >= 0
 # 6, 2, [1,2,3,4,5,6] -> [5,6,1,2,3,4]
 # 4, 0, [1,2,3,4] -> [1,2,3,4]
+# 方法一: 循环位移, 每次移动一位, 移动m次
+# 方法二: 借助空间o(m), 移动一次
+# 方法三: 1. 把前n-m位反转, 2. 后m位反转, 3. 前n-m位与后m位拼接, 4. 拼接后的数组反转即为所求结果
 
-def rotate(arr):
-    return
+def reverse(arr, begin, end):
+    # 反转arr的begin到end位
+    while begin < end:
+        temp = arr[begin]
+        arr[begin] = arr[end]
+        arr[end] = temp
+        begin += 1
+        end -= 1
+
+def rotate(arr, n, m):
+    reverse(arr, 0, n - m - 1)
+    reverse(arr, n - m, n - 1)
+    reverse(arr, 0, n - 1)
+    return arr
 
 def demo():
-    arr = []
-    result = rotate(arr)
+    arr = [1, 2, 3, 4, 5, 6]
+    m = 2
+    # arr = [1, 2, 3, 4]
+    # m = 0
+    n = len(arr)
+    result = rotate(arr, n, m)
     logging.info(result)
 
 if __name__ == '__main__':
