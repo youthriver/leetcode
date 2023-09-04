@@ -70,6 +70,9 @@ def demo():
     linkedlist = createLinkedList(arr)
     result = reverseLinkedList_fromMtoN(linkedlist, m, n)
     logging.info(f'result is {result}')
+    while result:
+        logging.info(result.val)
+        result = result.next
 
 if __name__ == '__main__':
     demo()
