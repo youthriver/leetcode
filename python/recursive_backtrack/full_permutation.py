@@ -9,6 +9,9 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # [1] -> [[1]]
 # 空间复杂度o(n!), 时间复杂度o(n!)
 
+# 要考虑到数组中有重复数字的情况
+# 递归方法 / 非递归方法 - 字典序?
+
 def full_permutation(arr):
     def recursive():
         pass
