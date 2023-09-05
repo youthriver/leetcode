@@ -13,6 +13,8 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 示例2: 输入1, [[2]], 返回值false
 # 示例3: 输入3, [[1, 2, 8, 9], [2, 4, 9, 12], [4, 7, 10, 13], [6, 8, 11, 15]], 返回值false, 说明: 不存在3, 返回false
 
+# 将target与右上角或左下角元素进行比较, 这样每次能去除一列或者一行
+
 def findNumberIn2DArray(arr, target):
     return
 
