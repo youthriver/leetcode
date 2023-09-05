@@ -10,6 +10,8 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 示例1: 输入 {1, 2, 3, 4, 5}, 2, 4, 返回值{1, 4, 3, 2, 5}
 # 示例2: 输入 {5}, 1, 1, 返回值{5}
 
+# 利用一个虚拟节点处理m是否为1的分类问题, m不为1时, 头指针不变, m为1时, 头指针需要改变
+
 class ListNode:
     def __init__(self, value):
         self.val = value
