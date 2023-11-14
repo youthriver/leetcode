@@ -42,7 +42,7 @@ def full_permutation(arr):
 def demo():
     arr = [1, 2, 3]
     # arr = [1]
-    # arr = [1, 1]
+    arr = [1, 1]
     result = full_permutation(arr)
     print(result)
 
