@@ -5,6 +5,7 @@ import os
 logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s', level=logging.DEBUG)
 
 # 给出一组数字，返回该组数字的所有排列
+# 以数字在数组中的位置靠前为优先级, 按字典序排列输出
 # [1,2,3] -> [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 # [1] -> [[1]]
 # 空间复杂度o(n!), 时间复杂度o(n!)
