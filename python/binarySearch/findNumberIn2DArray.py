@@ -16,11 +16,26 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 将target与右上角或左下角元素进行比较, 这样每次能去除一列或者一行
 
 def findNumberIn2DArray(arr, target):
-    return
+    row = len(arr)
+    col = len(arr[0])
+    for m in range(row):
+        if target < arr[m][0]:
+            return False
+        if target > arr[m][-1]:
+            continue
+        for n in range(col):
+            if target == arr[m][n]:
+                logging.info(f'row is {m}, col is {n}')
+                return True
+    return False
 
 def demo():
-    arr = []
-    target = 0
+    arr = [[1, 2, 8, 9], [2, 4, 9, 12], [4, 7, 10, 13], [6, 8, 11, 15]]
+    target = 7
+    # arr = [[2]]
+    # target = 1
+    # arr = [[1, 2, 8, 9], [2, 4, 9, 12], [4, 7, 10, 13], [6, 8, 11, 15]]
+    # target = 3
     result = findNumberIn2DArray(arr, target)
     logging.info(result)
 
