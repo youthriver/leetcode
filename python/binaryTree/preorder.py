@@ -30,7 +30,7 @@ def list2tree(arr):
     root = TreeNode(arr[0])
     queue = [root]
     for index, item in enumerate(arr):
-        if len(queue) == 0:
+        if not item:
             continue
         temp = queue[0]
         if index * 2 + 1 < num and arr[index * 2 + 1]:
@@ -53,7 +53,7 @@ def list2tree_recursive(arr):
         if index < len(arr):
             temp = TreeNode(arr[index])
             temp.left = trans(index * 2 + 1)
-            temp.right = trans(index * 2  + 2)
+            temp.right = trans(index * 2 + 2)
         return temp
     root = trans(0)
     return root
@@ -82,8 +82,9 @@ def preorder(root):
 
 def demo():
     arr = [3,9,20,None,None,15,7]
-    # root = list2tree(arr)
-    root = list2tree_recursive(arr)
+    arr = [1, 2, None, None, 3]
+    root = list2tree(arr)
+    # root = list2tree_recursive(arr)
 
     result = preorder(root)
     print(result)
