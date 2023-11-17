@@ -49,23 +49,25 @@ def list2tree_recursive(arr):
     root = trans(0)
     return root
 
+
+# https://blog.csdn.net/Turbo_Come/article/details/104602870?spm=1001.2014.3001.5502
 def inorder(root):
     result = []
-    stacks = [root.left]
-    while stacks:
-        temp = stacks[0]
-        if temp:
-            stacks.append(temp.left)
-            result.append(temp.value)
-            stacks.append(temp.right)
-        del stacks[0]
+    temp = root
+    stacks = []
+    while temp or (len(stacks) > 0):
+        while temp:
+            stacks.append(temp)
+            temp = temp.left
+        temp = stacks.pop()
+        result.append(temp.value)
+        temp = temp.right
 
     return result
 
 def inorder_recursive(root):
     def trans(root):
         if root:
-
             trans(root.left)
             result.append(root.value)
             trans(root.right)
