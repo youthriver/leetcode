@@ -16,14 +16,16 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 
 def minNumOfHost(arr):
     # 将数组分别按照开始、结束时间排序
-    arr.sort(key=lambda x: (x[0], x[1]))
+    # arr.sort(key=lambda x: (x[0], x[1]))
     num = len(arr)
     starts = []
     ends = []
     for i in range(num):
         starts.append(arr[i][0])
         ends.append(arr[i][1])
-    result = -1
+    starts.sort()
+    ends.sort()
+    result = 0
     index_end = 0
     for i in range(num):
         if starts[i] < ends[index_end]:
