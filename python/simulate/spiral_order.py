@@ -9,6 +9,9 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 示例一: 输入[[1,2,3],[4,5,6],[7,8,9]], 返回值[1,2,3,6,9,8,7,4,5]
 # 示例二: 输入[], 返回值[]
 
+# 方法一: 按照向右、向下、向左、向上的顺序从外圈遍历, 需要考虑清楚边界条件
+# 方法二: 每次去矩阵第一行, 然后将矩阵逆时针旋转90度后再取第一行, 递归处理直到为空
+
 def spiral_order(arr):
     result = []
     m = len(arr)
@@ -47,12 +50,25 @@ def spiral_order(arr):
 
     return result
 
+def spiralOrder2(matrix):
+    '''
+    递归法，一行代码。
+    [*zip(*matrix)] 表示将 matrix 的第一列作为第一行，第二列作为第二行… 即将矩阵进行对角线对称。
+    * 后面加上可迭代对象，相当于将可迭代对象依次列出。
+    可以用在两个场合：
+    1、[*a] 表示将a变为list，相当于 list(a)
+    2、fun(*a) 表示将a变为list，并且每个元素分别作为fun()的一个参数，即这时 fun 被传入了多个参数，而不是一个。
+    [*zip(*matrix)][::-1] 表示先将 matrix 进行对角线对称，然后将所有行逆序排列。
+    '''
+    return matrix and [*matrix.pop(0)] + spiralOrder2([*zip(*matrix)][::-1])
+
 def demo():
     arr = []
     arr = [[1,2,3],[4,5,6],[7,8,9]]
     arr = [[1,2]]
     arr = [[1,2,3],[4,5,6]]
-    result = spiral_order(arr)
+    # result = spiral_order(arr)
+    result = spiralOrder2(arr)
     logging.info(f'result is {result}')
 
 if __name__ == '__main__':
