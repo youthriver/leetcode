@@ -14,6 +14,8 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 示例一: 输入{1,2,3,4,5},2, 返回值{2,1,4,3,5}
 # 示例二: 输入{},1, 返回值{}
 
+# 方法一: 增加一个空节点作为链表头, 翻转完成后, 空节点的next即为新的翻转后的链表头; 以k个为一组, 进行翻转, 记录k个一组之前和之后的节点, 翻转完成后把翻转结果放回原链表
+
 class ListNode:
     def __init__(self, val):
         self.val = val
@@ -38,35 +40,46 @@ def linkedlist2list(head):
         curr = curr.next
     return result
 
-def reverseKGroup(head, k):
-    curr = head
-    step = 1
-    new_head = head
-    while curr:
-        if step % k == 1:
-            slow = curr
-        if step % k == 0:
-            fast = curr
-            if new_head is head:
-                new_head = curr
-            step = 0
-            prev = fast.next
-            for i in range(k):
-            # while slow is not fast.next:
-                nxt = slow.next
-                slow.next = prev
-                prev = slow
-                slow = nxt
-            curr = slow
-        else:
-            curr = curr.next
-        step += 1
+def reverse(start, end):
+    curr = start
+    prev = None
+    while curr != end:
+        temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
+    end.next = prev
+    return end, start
 
-    return new_head
+def reverseKGroup(head, k):
+    new_head = ListNode(-1)
+    new_head.next = head
+    pre = new_head
+    curr = head
+    start = curr
+    index = 0
+    while curr:
+        index += 1
+        if index % k == 0:
+            end = curr
+            after = end.next
+            start, end = reverse(start, end)
+            # 将翻转后结果与原链表相连, 即放回原链表
+            pre.next = start
+            end.next = after
+
+            pre = end
+            curr = end
+            start = end.next
+        curr = curr.next
+
+    return new_head.next
 
 def demo():
     arr = [1, 2, 3, 4, 5]
-    k = 2
+    k = 3
+    arr = []
+    k = 1
     head = list2linkedlist(arr)
     new_head = reverseKGroup(head, k)
     result = linkedlist2list(new_head)
