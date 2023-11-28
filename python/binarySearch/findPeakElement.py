@@ -21,6 +21,7 @@ def find_peak_element(arr):
     right = num - 1
     result = 0
     while (left < right):
+        # 如果二分查找加上等号会员什么影响
         mid = (left + right) // 2
         if mid == 0:
             low = -float('inf')
