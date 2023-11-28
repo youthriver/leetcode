@@ -19,7 +19,8 @@ def find_peak_element(arr):
     left = 0
     num = len(arr)
     right = num - 1
-    while (left <= right):
+    result = 0
+    while (left < right):
         mid = (left + right) // 2
         if mid == 0:
             low = -float('inf')
