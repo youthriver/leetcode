@@ -1,6 +1,6 @@
 
 import logging
-logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(level)s: %(message)s', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname)s: %(message)s', level=logging.DEBUG)
 
 # 有效括号序列  简单
 # 给出一个仅包含字符 '(', ')', '{', '}', '[', ']', 的字符串, 判断给出的字符串是否是合法的括号序列
@@ -10,11 +10,26 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(level)s: 
 # 示例一: 输入 "[", 返回值 false
 # 示例二: 输入 "[]", 返回值 true
 
+# 借助一个先入后出的栈对左括号门进行存储, 每次遇到右括号门, 就从栈中弹出最顶端元素, 检查是否匹配
+
 def is_valid(arr):
-    return
+    left = []
+    for item in arr:
+        if ((item == '(') or (item == '[') or (item == '{')):
+            left.append(item)
+        else:
+            temp = left.pop()
+            if ((temp == '(' and item == ')') or (temp == '[' and item == ']') or (temp == '{' and item == '}')):
+                continue
+            else:
+                return False
+    result = left == []
+    return result
 
 def demo():
     arr = '['
+    arr = '[]'
+    arr = '()[]{}'
     result = is_valid(arr)
     logging.info(f'result is {result}')
 
