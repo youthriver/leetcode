@@ -14,14 +14,15 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 
 def is_valid(arr):
     left = []
+    match = {'(': ')', '[': ']', '{': '}'}
     for item in arr:
         if ((item == '(') or (item == '[') or (item == '{')):
             left.append(item)
         else:
+            if len(left) == 0:
+                return False
             temp = left.pop()
-            if ((temp == '(' and item == ')') or (temp == '[' and item == ']') or (temp == '{' and item == '}')):
-                continue
-            else:
+            if match[temp] != item:
                 return False
     result = left == []
     return result
@@ -30,6 +31,7 @@ def demo():
     arr = '['
     arr = '[]'
     arr = '()[]{}'
+    arr = ''
     result = is_valid(arr)
     logging.info(f'result is {result}')
 
