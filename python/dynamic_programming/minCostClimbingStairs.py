@@ -13,8 +13,26 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 3. 支付1, 向上爬两个台阶, 到达下标为6的台阶; 4. 支付1, 向上爬一个台阶, 到达下标为7的台阶;
 # 5. 支付1, 向上爬两个台阶, 到达下标为9的台阶; 6. 支付1, 向上爬一个台阶, 到达楼梯顶部. 总花费为6
 
+# 方法一: 动态规划的方法, 到达第n阶台阶有两种方法, 从第n-1阶爬一个台阶或者从n-2阶爬两个台阶,
+# 递归公式为:f(n) = min( f(n-1)+cost[n-1], f(n-2)+cost[n-2] )
+# 借助一个列表用于存储到达每个节点的最小花费
+
+def min_cost_climbing_stairs(arr):
+    n = len(arr)
+    result = [0] * (n + 1)
+    if n == 0:
+        return 0
+    if n <= 2:
+        return min(arr)
+    for i in range(2, n+1):
+        result[i] = min(result[i-1]+arr[i-1], result[i-2]+arr[i-2])
+    return result[n]
+
 def demo():
-    arr = []
+    arr = [2,5,20]
+    arr = [1,100,1,1,1,90,1,1,80,1]
+    result = min_cost_climbing_stairs(arr)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
