@@ -13,8 +13,8 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例三: 输入[[1,1],[1,1]], 返回值为1
 
 # https://blog.csdn.net/vcj1009784814/article/details/124714547
-# 方法一: 深度优先搜索
-# 方法二: 广度优先搜索
+# 方法一: 深度优先搜索: 对二维矩阵的每个元素进行遍历, 如果为1则进行深度遍历, 利用递归的方法将上下左右相邻元素置为0
+# 方法二: 广度优先搜索: 对二维矩阵的每个元素进行遍历, 如果为1则进行广度遍历, 借助辅助队列存储上下左右元素, 按照先入先出的顺序依次进行遍历, 将对应元素置为0
 # 深度优先使用递归，一个方向走到底，广度优先使用一个辅助队列，先处理一个点的所有直接相邻节点
 # 方法三: 并查集, 并查集是一种数据结构, 包括合并和查找两种操作,
 # 并查集是一种在计算机科学中用于处理一些不交集（Disjoint Sets）的合并及查询问题的数据结构。
@@ -40,7 +40,8 @@ class DSU:
     def union(self, x, y):
         px = self.find(x)
         py = self.find(y)
-        self.p[px] = py
+        # self.p[px] = py
+        self.p[py] = px
 
 def num_of_islands_dsu(arr):
     if not arr:
@@ -56,7 +57,7 @@ def num_of_islands_dsu(arr):
                 for dr, dc in positions:
                     nr = r + dr
                     nc = c + dc
-                    if nr > 0 and nr < row and nc >0 and nc < col and arr[nr][nc] == 1:
+                    if nr >= 0 and nr < row and nc >=0 and nc < col and arr[nr][nc] == 1:
                         dsu.union(r*col+c, nr*col+nc)
     # 找到二维数组每个位置的根节点, 构成列表, 去重之后即为独立岛屿数目
     roots = []
@@ -68,10 +69,59 @@ def num_of_islands_dsu(arr):
     result = len(set(roots))
     return result
 
+
+def dfs(r, c, arr, row, col):
+    if r >=0 and r < row and c >=0 and c < col and arr[r][c] == 1:
+        arr[r][c] = 0
+        dfs(r+1, c, arr, row, col)
+        dfs(r-1, c, arr, row, col)
+        dfs(r, c+1, arr, row, col)
+        dfs(r, c-1, arr, row, col)
+
+def num_of_islands_dfs(arr):
+    if not arr:
+        return 0
+    row = len(arr)
+    col = len(arr[0])
+    num = 0
+    for r in range(row):
+        for c in range(col):
+            if (arr[r][c] == 1):
+                num += 1
+                dfs(r, c, arr, row, col)
+
+    return num
+
+def bfs(r, c, arr, row, col):
+    queues = [(r, c)]
+    while len(queues) > 0:
+        curr_r, curr_c = queues.pop(0)
+        if curr_r >=0 and curr_r < row and curr_c >= 0 and curr_c < col and arr[curr_r][curr_c] == 1:
+            arr[curr_r][curr_c] = 0
+            queues.extend([(curr_r+1, curr_c), (curr_r-1, curr_c), (curr_r, curr_c+1), (curr_r, curr_c-1)])
+    return
+
+def num_of_islands_bfs(arr):
+    if not arr:
+        return 0
+    row = len(arr)
+    col = len(arr[0])
+    num = 0
+    for r in range(row):
+        for c in range(col):
+            if arr[r][c] == 1:
+                num += 1
+                bfs(r, c, arr, row, col)
+
+    return num
+
 def demo():
     arr = [[1,1,0,0,0],[0,1,0,1,1],[0,0,0,1,1],[0,0,0,0,0],[0,0,1,1,1]]
-    arr = [[1,1],[1,1]]
-    result = num_of_islands_dsu(arr)
+    # arr = [[1,1],[1,1]]
+    # arr = [[0]]
+    # result = num_of_islands_dsu(arr)
+    # result = num_of_islands_dfs(arr)
+    result = num_of_islands_bfs(arr)
     logging.info(f'result is {result}')
 
 if __name__ == '__main__':
