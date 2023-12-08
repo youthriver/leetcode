@@ -1,6 +1,6 @@
 
 import logging
-logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname)s: %(mesage)s', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname)s: %(message)s', level=logging.DEBUG)
 
 # 验证IP地址  中等
 # 编写一个函数来验证输入的字符串是否是有效的IPv4或IPv6地址
@@ -19,8 +19,41 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例二: 输入 "2001:db8:85a3:0:0:8A2E:0370:7334", 返回值 "IPv6", 说明: 这是一个有效的IPv6地址, 所有返回"IPv6"
 # 示例三: 输入 "256.256.256.256", 返回值 "Neither", 说明: 这个地址既不是IPv4也不是IPv6地址
 
+def is_ipv4(arr):
+    parts = arr.split('.')
+    if (len(parts) != 4) or ('' in parts):
+        return False
+    for item in arr:
+        if ((item >= 'a' and item <='z') or (item >= 'A' and item <= 'Z')):
+            return False
+
+    for part in parts:
+        if int(part) > 255:
+            return False
+        if (('0' in part) and (part != '0')):
+            return False
+
+    return True
+
+def is_ipv6(arr):
+    parts = arr.split(':')
+    if (len(parts) != 8) or ('' in parts):
+        return False
+
+
+    return True
+
+def validate_ip(arr):
+    if is_ipv4(arr):
+        return "IPv4"
+    elif is_ipv6(arr):
+        return "IPv6"
+    return "Neither"
+
 def demo():
-    arr = ''
+    arr = '172.16.254.1'
+    result = validate_ip(arr)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
