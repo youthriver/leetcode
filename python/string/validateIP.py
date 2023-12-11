@@ -24,13 +24,14 @@ def is_ipv4(arr):
     if (len(parts) != 4) or ('' in parts):
         return False
     for item in arr:
+        # if not item.isdigit():
         if ((item >= 'a' and item <='z') or (item >= 'A' and item <= 'Z')):
             return False
 
     for part in parts:
-        if int(part) > 255:
+        if int(part) >= 255:
             return False
-        if (('0' in part) and (part != '0')):
+        if ((part.startswith('0')) and (part != '0')):
             return False
 
     return True
@@ -39,6 +40,12 @@ def is_ipv6(arr):
     parts = arr.split(':')
     if (len(parts) != 8) or ('' in parts):
         return False
+    for item in arr.lower():
+        if (item > 'f' and item <= 'z'):
+            return False
+    for part in parts:
+        if len(part) > 4:
+            return False
 
 
     return True
