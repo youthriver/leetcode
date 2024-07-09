@@ -12,21 +12,55 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例二: 输入[],[],返回值[]
 # 示例三: 输入[-1,2,4],[1,3,4],返回值[-1,1,2,3,4,4]
 
-class Linkedlist:
-    def __init__(self, val):
-        self.value = val
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
         self.next = None
 
 def list2linkedlist(arr):
-    return
+    root = None
+    for index, item in enumerate(arr):
+        if index == 0:
+            root = LinkedList(item)
+            before = root
+        else:
+            cur = LinkedList(item)
+            before.next = cur
+            before = cur
+    return root
 
-def merge_two_sorted_linkedlist(root):
-    return
+def merge_two_sorted_linkedlist(root1, root2):
+    root = LinkedList(-1)
+    cur = root
+    index1 = root1
+    index2 = root2
+    while (index1 and index2):
+        if (index1.value <= index2.value):
+            cur.value = index1.value
+            cur = cur.next
+            index1 = index1.next
+        else:
+            cur.value = index2.value
+            cur = cur.next
+            index2 = index2.next
+    while index1:
+        cur.value = index1.value
+        cur = cur.next
+        index1 = index1.next
+    while index2:
+        cur.value = index2.value
+        cur = cur.next
+        index2 = index2.next
+
+    return root
 
 def demo():
-    arr = []
-    root = list2linkedlist(arr)
-    result = merge_two_sorted_linkedlist(root)
+    arr1 = [1, 3, 5]
+    arr2 = [2, 4, 6]
+    root1 = list2linkedlist(arr1)
+    root2 = list2linkedlist(arr2)
+    result = merge_two_sorted_linkedlist(root1, root2)
     logging.info(f'result is {result}')
 
 
