@@ -10,7 +10,7 @@
 ## 09 two_pointer 双指针 3/5
 ## 10 greedy 贪心算法 2/2
 ## 11 simulate 模拟 3/4
-## 12 sort 快排 堆排 归并排序
+## 12 sort 快排 堆排 归并排序 十大排序算法
 
 # others
 https://algo.itcharge.cn/
