@@ -52,7 +52,7 @@ def mergeSort(arr):
 
 def inversePairs(arr):
     sortArray, result = mergeSort(arr)
-    return result
+    return result % 1000000007
 
 def demo():
     arr = [1, 2, 3, 4, 5, 6, 7, 0]
