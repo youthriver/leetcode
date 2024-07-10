@@ -14,6 +14,8 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 
 # 定义一个LinkedList结构变量, 其值是一个地址
 # 当前变量对象cur如果取到None值, 再往下赋值链表会断开
+# 方法一: 迭代
+# 方法二: 递归
 
 
 class LinkedList:

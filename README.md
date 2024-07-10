@@ -1,5 +1,5 @@
 # leetcode TOP101
-## 01 linkedList 链表 3/14
+## 01 linkedList 链表 4/14
 ## 02 binarySearch 二分查找/排序 3/5
 ## 03 binaryTree 二叉树 3/15
 ## 04 stack_heap_queue 堆/栈/队列 3/8
