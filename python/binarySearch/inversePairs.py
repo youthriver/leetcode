@@ -20,15 +20,43 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(leve
 # 方法二: 拷贝该数组后对拷贝的数组排序。计算数组中的最小值在原始数组中出现的位置，统计原始数组中最小值前面的个数，之后在原始数组中去掉最小值。重复上述步骤。
 # 方法三: 基于分治思想的归并排序, 将有序列表和逆序对计数一同返回的递归解法, 把数据分成前后两个数组(递归分到每个数组仅有一个数据项)。合并数组，合并时，出现前面的数组值array[i]大于后面数组值array[j]时；则前面数组array[i]~array[mid]都是大于array[j]的，count += mid+1 - i
 
+def merge(left, right, cnt):
+    result = []
+    index_left = 0
+    index_right = 0
+    while (index_left < len(left)) and (index_right < len(right)):
+        if left[index_left] <= right[index_right]:
+            result.append(left[index_left])
+            index_left += 1
+        else:
+            cnt += len(left) - index_left  # ****
+            result.append(right[index_right])
+            index_right += 1
+    while (index_left < len(left)):
+        result.append(left[index_left])
+        index_left += 1
+    while (index_right < len(right)):
+        result.append(right[index_right])
+        index_right += 1
+    return (result, cnt)
 
+def mergeSort(arr):
+    cnt = 0
+    if len(arr) < 2:
+        return (arr, cnt)
+    mid = len(arr) // 2
+    left, cnt_left = mergeSort(arr[:mid])
+    right, cnt_right = mergeSort(arr[mid:])
+    sortArray, cnt = merge(left, right, cnt_left+cnt_right)
+    return (sortArray, cnt)
 
 def inversePairs(arr):
-    result = 0
-
+    sortArray, result = mergeSort(arr)
     return result
 
 def demo():
     arr = [1, 2, 3, 4, 5, 6, 7, 0]
+    arr = [1, 2, 3]
     result = inversePairs(arr)
     logging.info(f'result is {result}')
 
