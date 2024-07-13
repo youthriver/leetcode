@@ -3,7 +3,7 @@
 ## 02 binarySearch 二分查找/排序 4/6
 ## 03 binaryTree 二叉树 4/15
 ## 04 stack_heap_queue 堆/栈/队列 4/8
-## 05 hash 哈希 3/3
+## 05 hash 哈希 4/4
 ## 06 recursive_backtrack 递归/回溯 3/6
 ## 07 dynamic_programming 动态规划 3/18
 ## 08 string 字符串 3/4
