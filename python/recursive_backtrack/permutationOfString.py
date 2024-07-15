@@ -13,8 +13,20 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例3：输入："abc"，返回值：["abc","acb","bac","bca","cab","cba"]
 # 示例4：输入：""，返回值：[""]
 
+def permutationOfString(str):
+    n = len(str)
+    result = []
+    if n == 0:
+        result = []
+    else:
+        pass
+
+    return result
+
 def demo():
-    arr = []
+    str = 'ab'
+    result = permutationOfString(str)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
