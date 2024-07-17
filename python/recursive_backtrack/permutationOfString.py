@@ -20,11 +20,12 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 即假设n-1=2位结果为['ab', 'ba']，则n=3位全排列结果为将第n位元素'c'分别插入'ab'和'ba', 其中插入位置为0->(n-1),即'c'插入'ab'的第0位为'cab',
 # 'c'插入'ab'的第1位为'acb', 'c'插入'ab'的第2位为'abc',同理'c'插入'ba'的第0位为'cba', 'c'插入'ba'的第1位为'bca','c'插入'ba'的第2位为'bac',
 # 对于重复元素的问题需要考虑当前插入的元素与当前插入位置的元素是否相同，如果相同则跳过
-# 方法二：考虑深度优先搜索所有排列方案，即通过字符交换，先固定第1位的字符(n种情况)，再固定第2位字符(n-1种情况)，...，最后固定最后一位字符(1种情况)
+# 方法二：深度优先的方法，对于长度为n的输入，第一位有n种可能，第二位有n-1种可能，直到最后一位1种可能。
+# 方法三：考虑深度优先搜索所有排列方案，先固定第1位的字符(n种情况)，再固定第2位字符(n-1种情况)，...，最后固定最后一位字符(1种情况)
 # 当字符串存在重复字符时，排列方案中也存在重复的排列方案。为了排除重复方案，需在固定某位字符时，保证“每种字符只在此位固定一次”，即遇到重复字符时不交换，
 # 直接跳过。从DFS角度看，此操作称为”剪枝“
 
-def permutationOfString(str):
+def permutationOfString1(str):
     n = len(str)
     str = ('').join(sorted(str))
     result = []
@@ -39,6 +40,33 @@ def permutationOfString(str):
                     # 剪枝
                     if (i >= len(item)) or (str[index] != item[i]):
                         result.append(item[:i] + str[index] + item[i:])
+
+    return result
+
+def permutationOfString(str):
+    def recursive(str, visited, temp):
+        if len(temp) == len(str):
+            result.append(temp)
+            return
+        # 用于记录当前位置存入的字符，避免重复字符放入同一个位置
+        curr = {}
+        for index, item in enumerate(str):
+            if (visited[index]):
+                continue
+            if item not in curr:
+                curr[item] = 1
+
+                visited[index] = True
+                recursive(str, visited, temp+item)
+                visited[index] = False
+
+    result = []
+    str = ''.join(sorted(str))
+    n = len(str)
+    visited = [False] * n
+    # 记录已排序字符
+    temp = ''
+    recursive(str, visited, temp)
 
     return result
 
