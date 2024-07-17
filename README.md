@@ -24,13 +24,13 @@
 数组中出现次数超过一半的数字 - moreThanHalfNum
 数组中只出现一次的两个数字 - findNumsAppearOnce
 缺失的第一个正整数 - minNumberDisappeared
-## 06 recursive_backtrack 递归/回溯 4/6
+## 06 recursive_backtrack 递归/回溯 6/6
 没有重复项数字的全排列 - permutation 中等 ？
 有重复项数字的全排列 - full_permutation 中等 ？
 岛屿数量 - numOfIslands 中等
 字符串的排序 - permutationOfString 中等
 括号生成 - generateParenthesis 中等
-矩阵最长递增路径 - 中等
+矩阵最长递增路径 - longestIncreasePathOfMatrix 中等
 ## 07 dynamic_programming 动态规划 3/18
 斐波那契数列 - fibonacci 入门
 跳台阶 - jumpFloor 简单
