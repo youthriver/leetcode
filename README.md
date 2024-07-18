@@ -31,7 +31,7 @@
 字符串的排序 - permutationOfString 中等
 括号生成 - generateParenthesis 中等
 矩阵最长递增路径 - longestIncreasePathOfMatrix 中等
-## 07 dynamic_programming 动态规划 6/18
+## 07 dynamic_programming 动态规划 5/18
 斐波那契数列 - fibonacci 入门
 跳台阶 - jumpFloor 简单
 最小花费爬楼梯 - minCostClimbingStairs 简单
