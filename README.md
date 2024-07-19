@@ -41,7 +41,7 @@
 字符串变形 - string_translate 简单
 最长公共前缀 - longestCommonPrefix 简单
 验证IP地址 - validateIP 中等
-大数加法 - 中等
+大数加法 - plusOfLargeNumber 中等
 ## 09 two_pointer 双指针 3/6
 合并两个有序数组 - merge_two_sorted_arr 简单
 判断是否为回文字符串 - is_palindrome 入门

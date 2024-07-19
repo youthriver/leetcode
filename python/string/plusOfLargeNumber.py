@@ -9,8 +9,33 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例1: 输入："1","99", 返回值："100", 说明：1+99=100
 # 示例1: 输入："114514","", 返回值："114514"
 
+def plusOfLargeNumber(str1, str2):
+    result = ''
+    n1 = len(str1)
+    n2 = len(str2)
+    # if (n1 == 0) or (n2 == 0):
+    #     return str1 + str2
+    if n1 > n2:
+        str2 = '0' * (n1 - n2) + str2
+    elif n1 < n2:
+        str1 = '0' * (n2 - n1) + str1
+    jinwei = 0
+    for index in range(max(n1, n2)-1, -1, -1):
+        temp = int(str1[index]) + int(str2[index]) + jinwei
+        jinwei = temp // 10
+        temp = temp - jinwei * 10
+        result += str(temp)
+    if jinwei > 0:
+        result += str(jinwei)
+    return result[::-1]
+
 def demo():
-    arr = []
+    str1 = '1'
+    str2 = '99'
+    str1 = '114514'
+    str2 = ''
+    result = plusOfLargeNumber(str1, str2)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
