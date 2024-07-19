@@ -13,8 +13,33 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例2: 输入：[2,2], 返回值：2
 # 示例3: 输入：[5,4,3,2,1,5], 返回值：25
 
+# 方法一：双指针法，从两端向中间遍历，记录当前面积，超过最大值则更新
+
+def maxArea(arr):
+    result = 0
+    n = len(arr)
+    if n < 2:
+        return result
+    left = 0
+    right = n - 1
+    while (right > left):
+        height = min(arr[left], arr[right])
+        width = right - left
+        curr = height * width
+        if curr > result:
+            result = curr
+        if arr[left] >= arr[right]:
+            right -= 1
+        else:
+            left += 1
+    return result
+
 def demo():
-    arr = []
+    arr = [1, 7, 3, 2, 4, 5, 8, 2, 7]
+    arr = [2, 2]
+    arr = [5, 4, 3, 2, 1, 5]
+    result = maxArea(arr)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
