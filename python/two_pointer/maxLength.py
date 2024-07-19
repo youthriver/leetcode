@@ -12,8 +12,42 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例4: 输入：[1,2,3,1,2,3,2,2], 返回值：3, 说明：最长子数组为[1,2,3]
 # 示例5: 输入：[2,2,3,4,8,99,3], 返回值：5, 说明：最长子数组为[2,3,4,8,99]
 
+# 方法一：双指针，注意边界条件！！
+
+def maxLength(arr):
+    result = []
+    n = len(arr)
+    left = 0
+    while (left < n):
+        item = arr[left]
+        temp = {item: left}
+        if left + 1 >= n:
+            if (len(temp) > len(result)):
+                result = temp.keys()
+            break
+        for right in range(left+1, n, 1):
+            if arr[right] not in temp:
+                temp[arr[right]] = right
+                if right == n - 1:
+                    if len(arr[left:right+1]) > len(result):
+                        result = arr[left:right+1]
+                    left = n
+            else:
+                if len(arr[left:right]) > len(result):
+                    result = arr[left:right]
+                left = temp[arr[right]] + 1
+                break
+    logging.info(f'result is {result}')
+    return len(result)
+
 def demo():
-    arr = []
+    arr = [2, 3, 4, 5]
+    arr = [2, 2, 3, 4, 3]
+    # arr = [9]
+    arr = [1,2,3,1,2,3,2,2]
+    arr = [2,2,3,4,8,99,3]
+    result = maxLength(arr)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()

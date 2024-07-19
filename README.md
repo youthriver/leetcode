@@ -47,7 +47,7 @@
 判断是否为回文字符串 - is_palindrome 入门
 合并区间 - mergeIntervals 中等
 反转字符串 - reverseString 入门
-最长无重复子数组 - 中等
+最长无重复子数组 - maxLength 中等
 盛水最多的容器 - 中等
 ## 10 greedy 贪心算法 2/2
 分发糖果 - distribute_candy 困难
