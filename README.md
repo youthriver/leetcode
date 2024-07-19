@@ -37,16 +37,16 @@
 最小花费爬楼梯 - minCostClimbingStairs 简单
 最长公共子序列(二) - longestCommonString_2 中等
 最长公共子串 - longestCommonString_1 中等
-## 08 string 字符串 3/4
+## 08 string 字符串 4/4
 字符串变形 - string_translate 简单
 最长公共前缀 - longestCommonPrefix 简单
 验证IP地址 - validateIP 中等
 大数加法 - plusOfLargeNumber 中等
-## 09 two_pointer 双指针 3/6
+## 09 two_pointer 双指针 4/6
 合并两个有序数组 - merge_two_sorted_arr 简单
 判断是否为回文字符串 - is_palindrome 入门
 合并区间 - mergeIntervals 中等
-反转字符串 - 入门
+反转字符串 - reverseString 入门
 最长无重复子数组 - 中等
 盛水最多的容器 - 中等
 ## 10 greedy 贪心算法 2/2

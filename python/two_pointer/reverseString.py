@@ -9,8 +9,20 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例1: 输入："abcd", 返回值："dcba"
 # 示例1: 输入："", 返回值：""
 
+def reverseString1(str):
+    return str[::-1]
+
+def reverseString(str):
+    result = ''
+    n = len(str)
+    for index in range(n):
+        result += str[n-1-index]
+    return result
+
 def demo():
-    arr = []
+    str = 'abcd'
+    result = reverseString(str)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
