@@ -48,7 +48,7 @@
 合并区间 - mergeIntervals 中等
 反转字符串 - reverseString 入门
 最长无重复子数组 - maxLength 中等
-盛水最多的容器 - 中等
+盛水最多的容器 - maxArea 中等
 ## 10 greedy 贪心算法 2/2
 分发糖果 - distribute_candy 困难
 主持人调度(二) - minNumOfHost 中等
