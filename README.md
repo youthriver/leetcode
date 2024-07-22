@@ -90,7 +90,7 @@
 ## 10 greedy 贪心算法 2/2
 分发糖果 - distribute_candy 困难
 主持人调度(二) - minNumOfHost 中等
-## 11 simulate 模拟 3/5
+## 11 simulate 模拟 4/5
 旋转数组 - rotate_array 中等
 螺旋矩阵 - spiral_order 中等
 顺时针旋转矩阵 - rotateMatrix 中等
