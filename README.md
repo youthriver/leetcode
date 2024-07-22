@@ -94,7 +94,7 @@
 旋转数组 - rotate_array 中等
 螺旋矩阵 - spiral_order 中等
 顺时针旋转矩阵 - rotateMatrix 中等
-设计LRU缓存结构 - 较难
+设计LRU缓存结构 - designLRU 较难
 设计LFU缓存结构 - 较难
 ## 12 sort 快排 堆排 归并排序 十大排序算法
 ## 手写NMS、transormer等
