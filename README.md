@@ -1,5 +1,5 @@
-# leetcode TOP101
-## 01 linkedList 链表 4/14
+# leetcode TOP101 86
+## 01 linkedList 链表 4/15
 反转链表 - reverseLinkedList 简单
 链表内指定区间反转 - reverseLinkedList_fromMtoN 中等
 链表中的节点每k个一组翻转 - reverseKGroup 中等
@@ -59,7 +59,7 @@
 字符串的排序 - permutationOfString 中等
 括号生成 - generateParenthesis 中等
 矩阵最长递增路径 - longestIncreasePathOfMatrix 中等
-## 07 dynamic_programming 动态规划 5/18
+## 07 dynamic_programming 动态规划 5/15
 斐波那契数列 - fibonacci 入门
 跳台阶 - jumpFloor 简单
 最小花费爬楼梯 - minCostClimbingStairs 简单
@@ -90,12 +90,12 @@
 ## 10 greedy 贪心算法 2/2
 分发糖果 - distribute_candy 困难
 主持人调度(二) - minNumOfHost 中等
-## 11 simulate 模拟 4/5
+## 11 simulate 模拟 5/5
 旋转数组 - rotate_array 中等
 螺旋矩阵 - spiral_order 中等
 顺时针旋转矩阵 - rotateMatrix 中等
 设计LRU缓存结构 - designLRU 较难
-设计LFU缓存结构 - 较难
+设计LFU缓存结构 - designLFU 较难
 ## 12 sort 快排 堆排 归并排序 十大排序算法
 ## 手写NMS、transormer等
 

@@ -32,6 +32,7 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 
 # LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，
 # 其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。
+# LRU（The Least Recently Used，最近最久未使用算法）是一种常见的缓存算法
 
 # 方法一：哈希表 + 双向链表的结构实现 LRU 缓存，哈希表中存放key和value, 双向链表中也存放key和value, 不过python不好写
 # python 中用 dict+list 实现, 列表记录每个元素调用的时间，最近调用元素放在最后面，dict记录key-value对
