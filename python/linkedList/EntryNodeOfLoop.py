@@ -17,8 +17,46 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例3: 输入：{},{2}, 返回值：2, 说明：
 # 环的部分只有一个结点，所以返回该环形链表入口结点，后台程序打印该结点对应的结点值，即2
 
+# 方法一：哈希表法, 遍历链表, 将每个节点存入字典, 如果遇到为空或者当前节点存在字典中则该节点为入环节点
+# 方法二：快慢指针, 慢指针每次走一步, 快指针每次走两步, 快慢指针相遇时快指针比慢指针多走了一圈且是慢指针的两倍,
+# 假设从起点到入环处距离为x, 慢指针走了环内的长度a, 环的总长度为a+b, 则相遇时慢指针总共走了x+a, 快指针总共走了x+a+b+a,
+# 则2*(x+a)=x+a+b+a, 可得x=b,此时第三个指针从链表起始位置开始走, 第三个指针会和慢指针在入环处相遇,
+# 此时第三个指针走了x步, 慢指针走了b步
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+def list2linkedlist(arr1, arr2):
+    head = LinkedList(-1)
+    curr = head
+    for index, item in enumerate(arr1):
+        curr.next = LinkedList(item)
+        curr = curr.next
+    for index, item in enumerate(arr2):
+        curr.next = list2linkedlist(item)
+        curr = curr.next
+        if index == 0:
+            temp = curr
+        if index == len(arr2) - 1:
+            curr.next = temp
+    return head.next
+
+def entryNodeOfLoop(head):
+
+    return
+
 def demo():
-    arr = []
+    arr1 = [1, 2]
+    arr2 = [3, 4, 5]
+    head = list2linkedlist(arr1, arr2)
+    node = entryNodeOfLoop(head)
+    if node:
+        result = node.value
+    else:
+        result = None
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()

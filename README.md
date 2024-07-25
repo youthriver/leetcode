@@ -1,12 +1,12 @@
 # leetcode TOP101 86
-## 01 linkedList 链表 6/15
+## 01 linkedList 链表 7/15
 反转链表 - reverseLinkedList 简单
 链表内指定区间反转 - reverseLinkedList_fromMtoN 中等
 链表中的节点每k个一组翻转 - reverseKGroup 中等
 合并两个排序的链表 - mergeTwoSortedLinkedList 简单
 合并k个已排序的列表 - mergeKLists 较难
 判断链表中是否有环 - hasCycle 简单
-链表中环的入口节点 - 中等
+链表中环的入口节点 - EntryNodeOfLoop 中等
 链表中倒数最后k个节点 - 简单
 两个链表的第一个公共节点 - 简单
 链表相加(二) - 中等
