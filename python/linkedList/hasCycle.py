@@ -15,8 +15,53 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 第一部分{1}代表一个链表，-1代表无环，组成传入head为一个无环的单链表，返回false
 # 示例3: 输入：{-1,-7,7,-4,19,6,-9,-5,-2,-5},6, 返回值：true
 
+# 方法一：遍历链表，遇到node为空或者出现过则终止，为空则返回false, 出现过返回True
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+def list2linkedlist(arr, node):
+    head = LinkedList(-1)
+    curr = head
+    for index, item in enumerate(arr):
+        curr.next = LinkedList(item)
+        curr = curr.next
+    next = head
+    index = -1
+    if node > -1:
+        while next:
+            if index == node:
+                curr.next = next
+                break
+            next = next.next
+            index += 1
+
+    return head.next
+
+def hasCycle(head):
+    result = False
+    temp = {}
+    while head:
+        if head not in temp:
+            temp[head] = 1
+            head = head.next
+        else:
+            result = True
+            break
+    return result
+
 def demo():
-    arr = []
+    arr = [3, 2, 0, -4]
+    node = 1
+    # arr = [1]
+    # node = -1
+    arr = [-1, -7, 7, -4, 19, 6, -9, -5, -2, -5]
+    node = 6
+    head = list2linkedlist(arr, node)
+    result = hasCycle(head)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
