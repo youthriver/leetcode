@@ -16,6 +16,8 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例3: 输入：{-1,-7,7,-4,19,6,-9,-5,-2,-5},6, 返回值：true
 
 # 方法一：遍历链表，遇到node为空或者出现过则终止，为空则返回false, 出现过返回True
+# 方法二：快慢指针，快指针每次走两步，慢指针每次走一步，快慢指针一定会相遇，相遇后，定义第三个指针从头开始每次走一步，则慢指针和第三个指针会在入环处相遇
+
 
 class LinkedList:
     def __init__(self, value):
