@@ -35,7 +35,7 @@ def list2linkedlist(arr1, arr2):
         curr.next = LinkedList(item)
         curr = curr.next
     for index, item in enumerate(arr2):
-        curr.next = list2linkedlist(item)
+        curr.next = LinkedList(item)
         curr = curr.next
         if index == 0:
             temp = curr
@@ -43,13 +43,42 @@ def list2linkedlist(arr1, arr2):
             curr.next = temp
     return head.next
 
-def entryNodeOfLoop(head):
+def entryNodeOfLoop1(head):
+    result = None
+    temp = {}
+    while head:
+        if head not in temp:
+            temp[head] = 1
+            head = head.next
+        else:
+            result = head
+            break
+    return result
 
-    return
+def entryNodeOfLoop(head):
+    slow = head
+    fast = head
+    result = None
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            # slow和fast相遇说明存在环结构
+            temp = head
+            while temp != slow:
+                slow = slow.next
+                temp = temp.next
+            result = temp
+            break
+    return result
 
 def demo():
     arr1 = [1, 2]
     arr2 = [3, 4, 5]
+    # arr1 = [1]
+    # arr2 = []
+    # arr1 = []
+    # arr2 = [2]
     head = list2linkedlist(arr1, arr2)
     node = entryNodeOfLoop(head)
     if node:
