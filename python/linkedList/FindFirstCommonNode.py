@@ -16,9 +16,85 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例2: 输入：{1},{2,3},{}, 返回值：{}, 说明：
 # 2个链表没有公共节点 ,返回null，后台打印{}
 
+# 方法一：首先遍历两个链表，分别记录两个链表长度为n1和n2，如果第一个链表和第二个链表的最后一个元素相同，说明有公共部分，
+# 重新遍历链表，将较长链表先走abs(n1-n2)步，在两个链表长度相同的情况下继续遍历，出现的第一个相同元素即为第一个公共节点
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+def list2linkedlist(arrs):
+    heads = []
+    head = LinkedList(-1)
+    curr = head
+    for item in arrs[2]:
+        curr.next = LinkedList(item)
+        curr = curr.next
+    temp = head.next
+    for index, arr in enumerate(arrs):
+        if index >= 2:
+            break
+        head = LinkedList(-1)
+        curr = head
+        for item in arr:
+            curr.next = LinkedList(item)
+            curr = curr.next
+        curr.next = temp
+        heads.append(head.next)
+    return heads
+
+def linkedlist2list(head):
+    result = []
+    while head:
+        result.append(head.value)
+        head = head.next
+    return result
+
+def findFirstCommonNode(heads):
+    head1 = heads[0]
+    head2 = heads[1]
+    curr1 = head1
+    num1 = 0
+    curr2 = head2
+    num2 = 0
+    while curr1:
+        num1 += 1
+        if curr1.next:
+            curr1 = curr1.next
+        else:
+            break
+    while curr2:
+        num2 += 1
+        if curr2.next:
+            curr2 = curr2.next
+        else:
+            break
+    if curr1 != curr2:
+        return curr1.next
+    curr1 = head1
+    curr2 = head2
+    if num1 >= num2:
+        step = num1 - num2
+        for i in range(step):
+            curr1 = curr1.next
+    else:
+        step = num2 - num1
+        for i in range(step):
+            curr2 = curr2.next
+    while curr1 != curr2:
+        curr1 = curr1.next
+        curr2 = curr2.next
+    return curr1
 
 def demo():
-    arr = []
+    arrs = [[1, 2, 3], [4, 5], [6, 7]]
+    arrs = [[1], [2, 3], []]
+    heads = list2linkedlist(arrs)
+    node = findFirstCommonNode(heads)
+    result = linkedlist2list(node)
+    logging.info(f'result is {result}')
+
 
 if __name__ == '__main__':
     demo()

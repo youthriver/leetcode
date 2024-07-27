@@ -14,6 +14,8 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 返回倒数第2个节点4，系统会打印后面所有的节点来比较。
 # 示例2: 输入：{2},8, 返回值：{}
 
+# 方法一：利用双指针，第一个指针比第二个指针多走k步，当第一个指针到达最后空位置，第一个指针正好在倒数第k个位置
+
 class LinkedList:
     def __init__(self, value):
         self.value = value

@@ -8,7 +8,7 @@
 判断链表中是否有环 - hasCycle 简单
 链表中环的入口节点 - EntryNodeOfLoop 中等
 链表中倒数最后k个节点 - FindKthToTail 简单
-两个链表的第一个公共节点 - 简单
+两个链表的第一个公共节点 - FindFirstCommonNode 简单
 链表相加(二) - 中等
 单链表的排序 - 中等
 判断一个链表是否为回文结构 - 简单
