@@ -11,9 +11,84 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例1: 输入：[9,3,7],[6,3], 返回值：{1,0,0,0}
 # 示例2: 输入：[0],[6,3], 返回值：{6,3}
 
+# 方法一：将两个链表反转后逐位相加，将相加后的结果链表再次反转即为结果
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+def list2linkedlist(arrs):
+    heads = []
+    for arr in arrs:
+        head = LinkedList(-1)
+        curr = head
+        for item in arr:
+            curr.next = LinkedList(item)
+            curr = curr.next
+        heads.append(head.next)
+    return heads
+
+def linkedlist2list(head):
+    result = []
+    while head:
+        result.append(head.value)
+        head = head.next
+    return result
+
+def reverse(head):
+    # 1 -> 2 -> 3, 1 <- 2 - 3, 1 <- 2 <- 3
+    curr = head
+    post = head.next
+    curr.next = None
+    while curr and post:
+        temp = post.next
+        post.next = curr
+        curr = post
+        post = temp
+    return curr
+
+def addInList(heads):
+    head1 = reverse(heads[0])
+    head2 = reverse(heads[1])
+    jinwei = 0
+    head = LinkedList(-1)
+    curr = head
+    while head1 and head2:
+        temp = head1.value + head2.value + jinwei
+        jinwei = temp // 10
+        value = temp % 10
+        curr.next = LinkedList(value)
+        curr = curr.next
+        head1 = head1.next
+        head2 = head2.next
+    while head1:
+        temp = head1.value + jinwei
+        jinwei = temp // 10
+        value = temp % 10
+        curr.next = LinkedList(value)
+        curr = curr.next
+        head1 = head1.next
+    while head2:
+        temp = head2.value + jinwei
+        jinwei = temp // 10
+        value = temp % 10
+        curr.next = LinkedList(value)
+        curr = curr.next
+        head2 = head2.next
+    if jinwei > 0:
+        curr.next = LinkedList(jinwei)
+        curr = curr.next
+    head = reverse(head.next)
+    return head
 
 def demo():
-    arr = []
+    arrs = [[9, 3, 7], [6, 3]]
+    arrs = [[0], [6, 3]]
+    heads = list2linkedlist(arrs)
+    node = addInList(heads)
+    result = linkedlist2list(node)
+    logging.info(f'result is {result}')
+
 
 if __name__ == '__main__':
     demo()
