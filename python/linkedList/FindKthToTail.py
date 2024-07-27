@@ -14,8 +14,47 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 返回倒数第2个节点4，系统会打印后面所有的节点来比较。
 # 示例2: 输入：{2},8, 返回值：{}
 
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+def list2linkedlist(arr):
+    head = LinkedList(-1)
+    curr = head
+    for index, item in enumerate(arr):
+        curr.next = LinkedList(item)
+        curr = curr.next
+    return head.next
+
+def linkedlist2list(head):
+    result = []
+    while head:
+        result.append(head.value)
+        head = head.next
+    return result
+def findKthToTail(head, k):
+    slow = head
+    fast = head
+    node = fast
+    for index in range(k):
+        if not fast:
+            return fast
+        fast = fast.next
+    while fast:
+        fast = fast.next
+        slow = slow.next
+    return slow
+
 def demo():
-    arr = []
+    arr = [1, 2, 3, 4, 5]
+    k = 2
+    arr = [2]
+    k = 8
+    head = list2linkedlist(arr)
+    node = findKthToTail(head, k)
+    result = linkedlist2list(node)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
