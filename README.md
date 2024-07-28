@@ -15,7 +15,7 @@
 链表的奇偶重排 - oddEvenList 中等
 删除有序链表中重复的元素-I - deleteDuplicates_1 简单
 删除有序链表中重复的元素-II - deleteDuplicates_2 中等
-## 02 binarySearch 二分查找/排序 4/6
+## 02 binarySearch 二分查找/排序 6/6
 二分查找-I - binarySearch_1 简单
 二维数组中的查找 - findNumberIn2DArray 中等
 寻找峰值 - findPeakElement 中等
