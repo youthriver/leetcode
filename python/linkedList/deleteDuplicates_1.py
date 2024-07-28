@@ -11,9 +11,40 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例1: 输入：{1,1,2}, 返回值：{1,2}
 # 示例2: 输入：{}, 返回值：{}
 
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+def list2linkedlist(arr):
+    head = LinkedList(-1)
+    curr = head
+    for item in arr:
+        curr.next = LinkedList(item)
+        curr = curr.next
+    return head.next
+def linkedlist2list(head):
+    result = []
+    while head:
+        result.append(head.value)
+        head = head.next
+    return result
+def deleteDuplicates_1(head):
+    curr = head
+    while curr and curr.next:
+        temp = curr.next
+        while (temp) and (curr.value == temp.value):
+            temp = temp.next
+        curr.next = temp
+        curr = curr.next
+    return head
 
 def demo():
+    arr = [1, 1, 2]
     arr = []
+    head = list2linkedlist(arr)
+    head = deleteDuplicates_1(head)
+    result = linkedlist2list(head)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
