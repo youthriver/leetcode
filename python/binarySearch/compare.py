@@ -26,9 +26,42 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例5: 输入："0.226","0.36", 返回值：1, 说明：
 # 226>36，version1的下标2>version2的下标2，返回1
 
+def compare(version1, version2):
+    result = 0
+    version1 = version1.split('.')
+    version2 = version2.split('.')
+    n1 = len(version1)
+    n2 = len(version2)
+    for index in range(max(n1, n2)):
+        if index < n1:
+            temp1 = version1[index]
+        else:
+            temp1 = 0
+        if index < n2:
+            temp2 = version2[index]
+        else:
+            temp2 = 0
+        if int(temp1) > int(temp2):
+            result = 1
+            break
+        elif int(temp1) < int(temp2):
+            result = -1
+            break
+    return result
 
 def demo():
-    arr = []
+    version1 = '1.1'
+    version2 = '2.1'
+    version1 = '1.1'
+    version2 = '1.01'
+    version1 = '1.1'
+    version2 = '1.1.1'
+    version1 = '2.0.1'
+    version2 = '2'
+    version1 = '0.226'
+    version2 = '0.36'
+    result = compare(version1, version2)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
