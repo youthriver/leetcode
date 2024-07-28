@@ -10,7 +10,7 @@
 链表中倒数最后k个节点 - FindKthToTail 简单
 两个链表的第一个公共节点 - FindFirstCommonNode 简单
 链表相加(二) - addInList 中等
-单链表的排序 - 中等
+单链表的排序 - sortInList 中等
 判断一个链表是否为回文结构 - 简单
 链表的奇偶重排 - 中等
 删除有序链表中重复的元素-I - 简单
