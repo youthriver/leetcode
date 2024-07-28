@@ -1,5 +1,5 @@
 # leetcode TOP101 86
-## 01 linkedList 链表 7/15
+## 01 linkedList 链表 15/15
 反转链表 - reverseLinkedList 简单
 链表内指定区间反转 - reverseLinkedList_fromMtoN 中等
 链表中的节点每k个一组翻转 - reverseKGroup 中等
@@ -20,8 +20,8 @@
 二维数组中的查找 - findNumberIn2DArray 中等
 寻找峰值 - findPeakElement 中等
 数组中的逆序对 - inversePairs 中等
-旋转数组的最小数字 - 简单
-比较版本号 - 中等
+旋转数组的最小数字 - minNumberInRotateArray 简单
+比较版本号 - compare 中等
 ## 03 binaryTree 二叉树 4/15
 二叉树的前序遍历 - preorder 简单
 二叉树的中序遍历 - inorder 中等
