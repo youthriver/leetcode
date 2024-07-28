@@ -12,8 +12,51 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 奇数位节点有1,6,7，偶数位节点有4,3。重排后为1,6,7,4,3
 # 备注：链表长度不大于200000。每个数范围均在int内。
 
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+def list2linkedlist(arr):
+    head = LinkedList(-1)
+    curr = head
+    for item in arr:
+        curr.next = LinkedList(item)
+        curr = curr.next
+    return head.next
+
+def linkedlist2list(head):
+    result = []
+    while head:
+        result.append(head.value)
+        head = head.next
+    return result
+
+def oddEvenList(head):
+    if (not head) or (not head.next):
+        return head
+    odd = head
+    even = head.next
+    temp = even
+    while even.next and even.next.next:
+        odd.next = even.next
+        even.next = even.next.next
+        odd = odd.next
+        even = even.next
+    if even.next:
+        odd.next = even.next
+        odd = odd.next
+        even.next = None
+    odd.next = temp
+
+    return head
+
 def demo():
-    arr = []
+    arr = [1, 2, 3, 4, 5, 6]
+    # arr = [1, 4, 6, 3, 7]
+    head = list2linkedlist(arr)
+    node = oddEvenList(head)
+    result = linkedlist2list(node)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()

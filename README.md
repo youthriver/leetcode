@@ -12,7 +12,7 @@
 链表相加(二) - addInList 中等
 单链表的排序 - sortInList 中等
 判断一个链表是否为回文结构 - isPail 简单
-链表的奇偶重排 - 中等
+链表的奇偶重排 - oddEvenList 中等
 删除有序链表中重复的元素-I - 简单
 删除有序链表中重复的元素-II - 中等
 ## 02 binarySearch 二分查找/排序 4/6
