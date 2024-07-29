@@ -16,12 +16,79 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 返回值描述：双向链表的其中一个头节点。
 # 示例1: 输入：{10,6,14,4,8,12,16}, 返回值：From left to right are:4,6,8,10,12,14,16;From right to left are:16,14,12,10,8,6,4; 说明：
 # 输入题面图中二叉树，输出的时候将双向链表的头节点返回即可。
-# 示例2: 输入：{5,4,#,3,#,2,#,1}, 返回值：
-# 示例3: 输入：, 返回值：From left to right are:1,2,3,4,5;From right to left are:5,4,3,2,1; 返回值：
-# From left to right are:1,2,3,4,5;From right to left are:5,4,3,2,1;
+# 示例2: 输入：{5,4,#,3,#,2,#,1}, 返回值：From left to right are:1,2,3,4,5;
+# From right to left are:5,4,3,2,1;
+
+# 二叉搜索树: 若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；
+# 若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；任意节点的左、右子树也分别为二叉查找树；
+# 二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低, 为 O(logn)
+# 方法一: 递归调用, 对任一节点, 左子树节点全部在前, 右子树节点全部在后, 当前节点在左右字树中间
+
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def list2tree(arr):
+    if len(arr) < 0:
+        return None
+    head = TreeNode(arr[0])
+    curr = [head]
+    index = 1
+    num = len(arr)
+    while (len(curr) > 0) and (index < num):
+        temp = []
+        for item in curr:
+            if (index < num) and (arr[index] != '#'):
+                item.left = TreeNode(arr[index])
+                temp.append(item.left)
+            index += 1
+            if (index < num) and (arr[index] != '#'):
+                item.right = TreeNode(arr[index])
+                temp.append(item.right)
+            index += 1
+        curr = temp
+    return head
+
+def tree2list(head):
+    result = []
+    curr = [head]
+    while len(curr) > 0:
+        temp = []
+        for index, item in enumerate(curr):
+            if item:
+                result.append(item.value)
+                if item.left or item.right:
+                    temp.append(item.left)
+                    temp.append(item.right)
+            else:
+                if (index != len(curr) - 1) or (len(temp) > 0):
+                    result.append('#')
+        curr = temp
+
+    return result
+
+def convert(head):
+    # head, tail
+    def recursive(node, left):
+        while node and left:
+            recursive(left, left.left)
+        return node.right
+
+    curr = head
+    recursive(curr, curr.left)
+    while curr.left:
+        curr = curr.left
+    return curr
 
 def demo():
-    arr = []
+    arr = [10, 6, 14, 4, 8, 12, 16]
+    # arr = [5, 4, '#', 3, '#', 2, '#', 1]
+    head = list2tree(arr)
+    head = convert(head)
+    result = tree2list(head)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
