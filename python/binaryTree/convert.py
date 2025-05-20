@@ -22,13 +22,23 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 二叉搜索树: 若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；
 # 若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；任意节点的左、右子树也分别为二叉查找树；
 # 二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低, 为 O(logn)
-# 方法一: 递归调用, 对任一节点, 左子树节点全部在前, 右子树节点全部在后, 当前节点在左右字树中间
+# 方法一: 递归调用, 对任一节点, 左子树节点全部在前, 右子树节点全部在后, 当前节点在左右字树中间, 中序遍历
+
 
 class TreeNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
+
+def list2tree(arr):
+    if len(arr) < 1:
+        return None
+    head = TreeNode(arr[0])
+    curr = [head]
+    index = 1
+
+
 
 def list2tree(arr):
     if len(arr) < 0:
@@ -73,14 +83,16 @@ def convert(head):
     # head, tail
     def recursive(node, left):
         while node and left:
-            recursive(left, left.left)
-        return node.right
+            temp = recursive(left, left.left)
 
+        return node.right
     curr = head
-    recursive(curr, curr.left)
+    curr = recursive(curr, curr.left)
     while curr.left:
         curr = curr.left
-    return curr
+    new_head = curr
+
+    return new_head
 
 def demo():
     arr = [10, 6, 14, 4, 8, 12, 16]
@@ -92,3 +104,5 @@ def demo():
 
 if __name__ == '__main__':
     demo()
+
+
