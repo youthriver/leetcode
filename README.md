@@ -22,14 +22,14 @@
 数组中的逆序对 - inversePairs 中等
 旋转数组的最小数字 - minNumberInRotateArray 简单
 比较版本号 - compare 中等
-## 03 binaryTree 二叉树 5/15
+## 03 binaryTree 二叉树 6/15
 二叉树的前序遍历 - preorder 简单
 二叉树的中序遍历 - inorder 中等
 二叉树的后序遍历 - postorder 简单
 二叉树的最大深度 - maxDepth 简单
 二叉搜索树与双向链表 - convert 中等
 合并二叉树 - mergeTrees 简单
-二叉树的镜像 - 简单
+二叉树的镜像 - mirror 简单
 判断是不是二叉搜索树 - 中等
 判断是不是完全二叉树 - 中等
 判断是不是平衡二叉树 - 简单
