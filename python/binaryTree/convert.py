@@ -22,7 +22,7 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 二叉搜索树: 若任意节点的左子树不空，则左子树上所有节点的值均小于它的根节点的值；
 # 若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；任意节点的左、右子树也分别为二叉查找树；
 # 二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低, 为 O(logn)
-# 方法一: 递归调用, 对任一节点, 左子树节点全部在前, 右子树节点全部在后, 当前节点在左右字树中间, 中序遍历
+# 方法一: 递归调用, 将当前处理的子树调整为双向链表，并返回左右两个节点
 
 
 class TreeNode:
@@ -30,13 +30,6 @@ class TreeNode:
         self.value = value
         self.left = None
         self.right = None
-
-def list2tree(arr):
-    if len(arr) < 1:
-        return None
-    head = TreeNode(arr[0])
-    curr = [head]
-    index = 1
 
 
 
@@ -79,27 +72,54 @@ def tree2list(head):
 
     return result
 
-def convert(head):
-    # head, tail
-    def recursive(node, left):
-        while node and left:
-            temp = recursive(left, left.left)
 
-        return node.right
+def linklist2list(head):
+    result = []
     curr = head
-    curr = recursive(curr, curr.left)
-    while curr.left:
-        curr = curr.left
-    new_head = curr
+    while curr:
+        result.append(curr.value)
+        curr = curr.right
+    return result
 
-    return new_head
+def convert(head):
+    def recursive(head):
+        # 对于当前节点下的二叉树转换为双向链表，并返回左右两侧节点
+        if (not head.left) and (not head.right):
+            return (head, head)
+        if (not head.left):
+            left, right = recursive(head.right)
+            head.right = left
+            left.left = head
+            return (head, right)
+        if (not head.right):
+            left, right = recursive(head.left)
+            head.left = right
+            right.right = head
+            return (left, head)
+        left1, right1 = recursive(head.left)
+        left2, right2 = recursive(head.right)
+        head.left = right1
+        right1.right = head
+        head.right = left2
+        left2.left = head
+        return (left1, right2)
+    if not head:
+        return head
+    curr = head
+    left, right = recursive(curr)
+    return left
+
+
 
 def demo():
     arr = [10, 6, 14, 4, 8, 12, 16]
-    # arr = [5, 4, '#', 3, '#', 2, '#', 1]
+    arr = [5, 4, '#', 3, '#', 2, '#', 1]
     head = list2tree(arr)
-    head = convert(head)
-    result = tree2list(head)
+    logging.info(f'head is {head.value}')
+    head_new = convert(head)
+    logging.info(f'head_new is {head_new.value}')
+    # result = tree2list(head)
+    result = linklist2list(head_new)
     logging.info(f'result is {result}')
 
 if __name__ == '__main__':
