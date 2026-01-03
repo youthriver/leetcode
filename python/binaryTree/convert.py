@@ -23,6 +23,7 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 若任意节点的右子树不空，则右子树上所有节点的值均大于它的根节点的值；任意节点的左、右子树也分别为二叉查找树；
 # 二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低, 为 O(logn)
 # 方法一: 递归调用, 将当前处理的子树调整为双向链表，并返回左右两个节点
+# 方法二：中序遍历
 
 
 class TreeNode:
