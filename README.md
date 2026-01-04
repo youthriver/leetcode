@@ -22,7 +22,7 @@
 数组中的逆序对 - inversePairs 中等
 旋转数组的最小数字 - minNumberInRotateArray 简单
 比较版本号 - compare 中等
-## 03 binaryTree 二叉树 6/15
+## 03 binaryTree 二叉树 7/15
 二叉树的前序遍历 - preorder 简单
 二叉树的中序遍历 - inorder 中等
 二叉树的后序遍历 - postorder 简单
