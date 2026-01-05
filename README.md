@@ -22,7 +22,7 @@
 数组中的逆序对 - inversePairs 中等
 旋转数组的最小数字 - minNumberInRotateArray 简单
 比较版本号 - compare 中等
-## 03 binaryTree 二叉树 7/15
+## 03 binaryTree 二叉树 8/15
 二叉树的前序遍历 - preorder 简单
 二叉树的中序遍历 - inorder 中等
 二叉树的后序遍历 - postorder 简单
@@ -31,7 +31,7 @@
 合并二叉树 - mergeTrees 简单
 二叉树的镜像 - mirror 简单
 判断是不是二叉搜索树 - isValidBST 中等
-判断是不是完全二叉树 - 中等
+判断是不是完全二叉树 - isCompleteTree 中等
 判断是不是平衡二叉树 - 简单
 二叉搜索树的最近公共祖先 - 简单
 在二叉树中找到两个节点的最近公共祖先 - 中等

@@ -11,9 +11,52 @@ logging.basicConfig(format='%(asctime)s - %(filename)s[%(lineno)d] - %(levelname
 # 示例1: 输入：{1,2,3}, 返回值：false, 说明：如题面图1
 # 示例2: 输入：{2,1,3}, 返回值：true, 说明：如题面图2
 
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def list2tree(arr):
+    num = len(arr)
+    if num < 1:
+        return None
+    head = TreeNode(arr[0])
+    curr = [head]
+    index = 1
+    while index < num:
+        temp = []
+        for item in curr:
+            if (index < num) and (arr[index] != '#'):
+                item.left = TreeNode(arr[index])
+                temp.append(item.left)
+            index += 1
+            if (index < num) and (arr[index] != '#'):
+                item.right = TreeNode(arr[index])
+                temp.append(item.right)
+            index += 1
+        curr = temp
+    return head
+
+def isValidBST(head):
+    def recursive(head):
+        # 对于左边节点记录最大值，对于右边节点记录最小值
+        if (not head.left) and (not head.right):
+            return head.value
+        if head.left:
+            left_min, left_max = recursive(head.left)
+        if head.right:
+            right_min, right_max = recursive(head.right)
+
+    return result
 
 def demo():
-    arr = []
+    arr = [1, 2, 3]
+    # arr = [2, 1, 3]
+    arr = [3,2,5,1,4]   # false
+    head = list2tree(arr)
+    result = isValidBST(head)
+    logging.info(f'result is {result}')
 
 if __name__ == '__main__':
     demo()
